@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+        maven { url "https://dl.bintray.com/hmtmcse/maven/" }
+        maven { url "https://repo.maven.apache.org/maven2/" }
+    }
+    dependencies {
+        classpath 'org.ajoberstar.grgit:grgit-core:3.1.1'
+    }
+}
+
+def projectDependencies = [
+        [
+                "name"        : "None Spring Library",
+                "destination" : "$dependencySource" + "library/",
+                "dependencies": [
+                        "pf-java-object-copier": "https://github.com/problemfighter/pf-java-object-copier.git",
+                ]
+        ],
+        [
+                "name"        : "Spring Boot Library",
+                "destination" : "$dependencySource" + "module/",
+                "dependencies": [
+                        "pfspring-common"  : "https://github.com/problemfighter/pfspring-common.git",
+                        "pfspring-rest-api": "https://github.com/problemfighter/pfspring-rest-api.git",
+                ]
+        ]
+]
+
+task resolveSourceDependencies {
+    doLast {
+        if (isSourceDevelopment.equals("true")) {
+            String destinationPath = ""
+            projectDependencies.each { Map dependencyMap ->
+                destinationPath = dependencyMap.destination
+                println("Now Cloning ${dependencyMap.name}")
+                dependencyMap.dependencies.each { name, url ->
+                    println("------------------------------------------------------------------------------------------")
+                    def destination = file(destinationPath + name)
+                    try {
+                        println("Cloning Project ${name}")
+                        org.ajoberstar.grgit.Grgit.clone(dir: destination, uri: url)
+                    } catch (Exception e) {
+                        println(e.getMessage())
+                    }
+                    println("------------------------------------------------------------------------------------------\n")
+                }
+            }
+        }else {
+            println "Source Development not enabled, Please check the gradle.properties file."
+        }
+    }
+}

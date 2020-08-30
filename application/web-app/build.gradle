@@ -1,0 +1,16 @@
+
+group = 'com.problemfighter.pfspring.webapp'
+version = '1.0.0'
+
+repositories {
+	mavenCentral()
+}
+
+apply from: "${rootProject.projectDir}/${gradleAppConfig}/sbc-dependencies.gradle"
+apply from: "${rootProject.projectDir}/${gradleAppConfig}/include-all-modules.gradle"
+
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+}
+

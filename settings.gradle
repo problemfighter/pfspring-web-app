@@ -1,0 +1,21 @@
+rootProject.name = 'PFSpringWebApp'
+String webApp = "web-app"
+include(webApp)
+project(":${webApp}").projectDir = new File(applicationPath, webApp)
+
+[dependencySource, applicationPath].each { root ->
+    File rootPath = file(root)
+    if (rootPath.exists()) {
+        ["module", "library"].each { subsection ->
+            File subsectionDirectory = new File(root, subsection)
+            if (subsectionDirectory.exists()) {
+                subsectionDirectory.list().each { name ->
+                    if (name != "empty") {
+                        include(name)
+                        project(":${name}").projectDir = new File(subsectionDirectory, name)
+                    }
+                }
+            }
+        }
+    }
+}
