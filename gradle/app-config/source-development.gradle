@@ -29,27 +29,55 @@ def projectDependencies = [
         ]
 ]
 
+
+void cloneProject(List projectList) {
+    String destinationPath = ""
+    projectList.each { Map dependencyMap ->
+        destinationPath = dependencyMap.destination
+        println("Now Cloning ${dependencyMap.name}")
+        dependencyMap.dependencies.each { name, url ->
+            println("------------------------------------------------------------------------------------------")
+            def destination = file(destinationPath + name)
+            try {
+                println("Cloning Project ${name}")
+                org.ajoberstar.grgit.Grgit.clone(dir: destination, uri: url)
+            } catch (Exception e) {
+                println(e.getMessage())
+            }
+            println("------------------------------------------------------------------------------------------\n")
+        }
+    }
+}
+
 task resolveSourceDependencies {
     doLast {
         if (isSourceDevelopment.equals("true")) {
-            String destinationPath = ""
-            projectDependencies.each { Map dependencyMap ->
-                destinationPath = dependencyMap.destination
-                println("Now Cloning ${dependencyMap.name}")
-                dependencyMap.dependencies.each { name, url ->
-                    println("------------------------------------------------------------------------------------------")
-                    def destination = file(destinationPath + name)
-                    try {
-                        println("Cloning Project ${name}")
-                        org.ajoberstar.grgit.Grgit.clone(dir: destination, uri: url)
-                    } catch (Exception e) {
-                        println(e.getMessage())
-                    }
-                    println("------------------------------------------------------------------------------------------\n")
-                }
-            }
-        }else {
+            cloneProject(projectDependencies)
+        } else {
             println "Source Development not enabled, Please check the gradle.properties file."
         }
     }
+}
+
+def testProject = [
+        [
+                "name"        : "Spring Boot Test Library",
+                "destination" : "$applicationPath" + "module/",
+                "dependencies": [
+                        "pfspring-web-test-module": "https://github.com/problemfighter/pfspring-web-test-module.git",
+                ]
+        ]
+]
+
+task cloneStudentSubProject {
+    doLast {
+        cloneProject(testProject)
+    }
+}
+
+
+String testFeature = System.getProperty("test-feature")
+if (testFeature && testFeature.equals("yes")) {
+    println("------------- Cloning Test Project -------------")
+    build.dependsOn cloneStudentSubProject
 }
