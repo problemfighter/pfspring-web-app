@@ -66,3 +66,8 @@ task prepareSourceDevelopment {
         println "Preparing Source Development"
     }
 }
+
+// For Heroku Build
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
+stage.dependsOn(cloneStudentSubProject)

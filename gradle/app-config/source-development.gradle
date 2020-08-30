@@ -82,7 +82,3 @@ if (testFeature && testFeature.equals("yes")) {
     build.dependsOn cloneStudentSubProject
 }
 
-// For Heroku Build
-task stage(dependsOn: ['build', 'clean'])
-build.mustRunAfter clean
-stage.dependsOn(cloneStudentSubProject)
