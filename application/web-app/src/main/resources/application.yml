@@ -1,5 +1,7 @@
 server:
   port: 9901
+  error:
+    path: "/error"
 
 spring:
   profiles:

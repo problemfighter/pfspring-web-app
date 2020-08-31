@@ -3,6 +3,7 @@ package com.problemfighter.pfspring.webapp.controller;
 import com.problemfighter.pfspring.restapi.common.ApiProcessorException;
 import com.problemfighter.pfspring.restapi.exception.ExceptionProcessor;
 import com.problemfighter.pfspring.restapi.exception.HttpToApiException;
+import io.swagger.annotations.Api;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 @RestController
+@Api(tags = "Global Exception Handler")
 public class PFSpringExceptionController implements ErrorController {
 
     @ExceptionHandler(Exception.class)
@@ -32,7 +34,7 @@ public class PFSpringExceptionController implements ErrorController {
 
     @Override
     public String getErrorPath() {
-        return null;
+        return "/error";
     }
 
 
