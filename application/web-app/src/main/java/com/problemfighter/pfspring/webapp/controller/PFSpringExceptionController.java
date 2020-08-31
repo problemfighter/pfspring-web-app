@@ -1,6 +1,6 @@
 package com.problemfighter.pfspring.webapp.controller;
 
-import com.problemfighter.pfspring.restapi.common.ApiProcessorException;
+import com.problemfighter.pfspring.restapi.common.ApiRestException;
 import com.problemfighter.pfspring.restapi.exception.ExceptionProcessor;
 import com.problemfighter.pfspring.restapi.exception.HttpToApiException;
 import io.swagger.annotations.Api;
@@ -21,8 +21,8 @@ public class PFSpringExceptionController implements ErrorController {
         return ExceptionProcessor.instance().handleException(exception);
     }
 
-    @ExceptionHandler(value = ApiProcessorException.class)
-    public Object apiProcessorException(ApiProcessorException exception) {
+    @ExceptionHandler(value = ApiRestException.class)
+    public Object apiProcessorException(ApiRestException exception) {
         return exception.getError();
     }
 
