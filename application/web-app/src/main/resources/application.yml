@@ -10,3 +10,7 @@ spring:
     url: 'jdbc:h2:mem:sq-quick-start'
     username: 'sa'
     password: ''
+
+logging:
+  pattern:
+    console: '%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(:){red} %clr(%m){faint}%n'
