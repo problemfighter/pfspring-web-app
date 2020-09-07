@@ -1,0 +1,9 @@
+= Owing the Boilerplate
+
+* Go to ProjectRoot >> application >> web-app >> src >> main >> java
+* Rename the package name to your own. My case it was (com.hmtmcse.webapp)
+* Go to ProjectRoot >> application >> web-app >> build.gradle and rename the group and version. My case it was (com.hmtmcse, 1.0.0)
+* Go to ProjectRoot >> build.gradle and rename the group and version. My case it was (com.hmtmcse.webapp, 1.0.0)
+* Go to ProjectRoot >> settings.gradle and rename rootProject.name = ''. My case it was (TMWeb)
+* (Optional) If you want then can change the WebApp class to your own name. My case it was (TMWeb)
+*

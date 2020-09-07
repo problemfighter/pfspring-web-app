@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 @RestController
 @Api(tags = "Global Exception Handler")
-public class PFSpringExceptionController implements ErrorController {
+public class GlobalExceptionHandlerController implements ErrorController {
 
     @ExceptionHandler(Exception.class)
     public Object handleException(HttpServletRequest request, Exception exception) {
