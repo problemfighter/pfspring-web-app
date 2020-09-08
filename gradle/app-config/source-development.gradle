@@ -14,14 +14,14 @@ buildscript {
 def projectDependencies = [
         [
                 "name"        : "None Spring Library",
-                "destination" : "$dependencySource" + "library/",
+                "destination" : "$dependencySource" + "dev-library/",
                 "dependencies": [
                         "pf-java-object-copier": "https://github.com/problemfighter/pf-java-object-copier.git",
                 ]
         ],
         [
                 "name"        : "Spring Boot Library",
-                "destination" : "$dependencySource" + "module/",
+                "destination" : "$dependencySource" + "dev-module/",
                 "dependencies": [
                         "pfspring-common"  : "https://github.com/problemfighter/pfspring-common.git",
                         "pfspring-rest-api": "https://github.com/problemfighter/pfspring-rest-api.git",

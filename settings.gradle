@@ -6,7 +6,7 @@ project(":${webApp}").projectDir = new File(applicationPath, webApp)
 [dependencySource, applicationPath].each { root ->
     File rootPath = file(root)
     if (rootPath.exists()) {
-        ["module", "library"].each { subsection ->
+        ["module", "library", "dev-module", "dev-library"].each { subsection ->
             File subsectionDirectory = new File(root, subsection)
             if (subsectionDirectory.exists()) {
                 subsectionDirectory.list().each { name ->
