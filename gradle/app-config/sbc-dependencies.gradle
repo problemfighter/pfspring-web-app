@@ -4,25 +4,6 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 
-Boolean isItFrameworkDependency(String name) {
-    String projectRoot = rootProject.projectDir
-    List projectRoots = [dependencySource]
-    for (String projectRootName : projectRoots) {
-        File rootPath = new File(projectRoot, projectRootName)
-        List modules = ["dev-module", "dev-library"]
-        for (String moduleName : modules) {
-            File subsectionDirectory = new File(rootPath, moduleName)
-            if (subsectionDirectory.exists()) {
-                if (subsectionDirectory.list().contains(name)) {
-                    return true
-                }
-
-            }
-        }
-    }
-    return false
-}
-
 def dependencyList = [
         [group: "com.problemfighter.java.oc", name: "pf-java-object-copier", version: "$pfJavaObjectCopier"],
         [group: "com.problemfighter.pfspring.common", name: "pfspring-common", version: "$pfSpringCommon"],
@@ -31,20 +12,16 @@ def dependencyList = [
 ]
 
 dependencies {
-
-    if (!isItFrameworkDependency(project.name)) {
+    dependencyList.each {
         if (isSourceDevelopment.equals("true")) {
-            dependencyList.each {
-                if (findProject(":" + it.name)) {
-                    implementation project(":" + it.name)
-                }
+            if (findProject(":" + it.name)) {
+                implementation project(":" + it.name)
             }
-        } else {
-            dependencyList.each {
-                implementation "${it.group}:${it.name}:${it.version}"
-            }
+        }else{
+            implementation "${it.group}:${it.name}:${it.version}"
         }
     }
+
 
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'
