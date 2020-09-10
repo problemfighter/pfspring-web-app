@@ -10,7 +10,7 @@ project(":${webApp}").projectDir = new File(applicationPath, webApp)
             File subsectionDirectory = new File(root, subsection)
             if (subsectionDirectory.exists()) {
                 subsectionDirectory.list().each { name ->
-                    if (name != "empty") {
+                    if (name != "empty" && name != ".git" && name != "LICENSE" && name != ".gitignore") {
                         include(name)
                         project(":${name}").projectDir = new File(subsectionDirectory, name)
                     }

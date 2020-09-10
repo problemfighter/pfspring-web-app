@@ -63,14 +63,14 @@ task resolveSourceDependencies {
 def testProject = [
         [
                 "name"        : "Spring Boot Test Library",
-                "destination" : "$applicationPath" + "module/",
+                "destination" : "$applicationPath",
                 "dependencies": [
-                        "pfspring-web-test-module": "https://github.com/problemfighter/pfspring-web-test-module.git",
+                        "module": "https://github.com/problemfighter/pfspring-feature-test-module.git",
                 ]
         ]
 ]
 
-task cloneStudentSubProject {
+task cloneFeatureTestModule {
     doLast {
         cloneProject(testProject)
     }
