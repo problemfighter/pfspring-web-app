@@ -33,3 +33,5 @@ out/
 
 ./gradle.properties
 ./dependency-source
+
+/management-tool
