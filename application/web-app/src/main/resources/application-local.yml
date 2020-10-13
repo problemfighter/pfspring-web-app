@@ -1,13 +1,17 @@
 spring:
   profiles: local
   datasource:
-    url: 'jdbc:h2:mem:sq-quick-start'
-    username: 'sa'
+    url: "jdbc:mysql://localhost/pfspring_web_app?useUnicode=yes&characterEncoding=UTF-8&characterSetResults=UTF-8&createDatabaseIfNotExist=true"
+    username: 'root'
     password: ''
-
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
   redis:
     host: localhost
     port: 6379
   cache:
     redis:
       key-prefix: dev_
+    type: redis
