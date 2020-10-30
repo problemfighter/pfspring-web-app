@@ -1,10 +1,22 @@
 spring:
+#  jackson:
+#    serialization:
+#      FAIL_ON_EMPTY_BEANS: false
   profiles: local
   datasource:
     url: "jdbc:mysql://localhost/pfspring_web_app?useUnicode=yes&characterEncoding=UTF-8&characterSetResults=UTF-8&createDatabaseIfNotExist=true"
     username: 'root'
     password: ''
   jpa:
+    properties:
+      hibernate:
+        cache:
+          use_query_cache: true
+          use_second_level_cache: true
+          factory_class: org.redisson.hibernate.RedissonRegionFactory
+          redisson:
+            fallback: true
+            config: redission/redisson-dev.yaml
     show-sql: true
     hibernate:
       ddl-auto: update
@@ -14,4 +26,5 @@ spring:
   cache:
     redis:
       key-prefix: dev_
+      use-key-prefix: true
     type: redis
