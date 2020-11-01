@@ -3,6 +3,10 @@ spring:
 #    serialization:
 #      FAIL_ON_EMPTY_BEANS: false
   profiles: local
+  autoconfigure:
+    exclude:
+      - org.redisson.spring.starter.RedissonAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
   datasource:
     url: "jdbc:mysql://localhost/pfspring_web_app?useUnicode=yes&characterEncoding=UTF-8&characterSetResults=UTF-8&createDatabaseIfNotExist=true"
     username: 'root'
@@ -11,12 +15,12 @@ spring:
     properties:
       hibernate:
         cache:
-          use_query_cache: true
-          use_second_level_cache: true
+          use_query_cache: false
+          use_second_level_cache: false
           factory_class: org.redisson.hibernate.RedissonRegionFactory
-          redisson:
-            fallback: true
-            config: redission/redisson-dev.yaml
+#          redisson:
+#            fallback: true
+#            config: redission/redisson-dev.yaml
     show-sql: true
     hibernate:
       ddl-auto: update
@@ -27,4 +31,10 @@ spring:
     redis:
       key-prefix: dev_
       use-key-prefix: true
-    type: redis
+    type: none
+
+
+management:
+  health:
+    elasticsearch:
+      enabled: false
