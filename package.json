@@ -1,0 +1,25 @@
+{
+  "name": "pfspring-web-app",
+  "version": "1.0.0",
+  "description": "PF Spring WebApp",
+  "main": "index.js",
+  "repository": "https://github.com/problemfighter/react-mui-app.git",
+  "author": "Touhid Mia <hmtm.cse@gmail.com>",
+  "license": "Apache License 2.0",
+  "private": true,
+  "workspaces": [
+    "app-ui/dependency-source/*",
+    "app-ui/ui/*",
+    "application/module/*/ui/*"
+  ],
+  "scripts": {
+    "start-rma": "lerna run start-rma --stream",
+    "build-rma": "lerna run build-rma --stream",
+    "start-my-app": "lerna run start-my-app --stream",
+    "build-my-app": "lerna run build-my-app --stream"
+  },
+  "devDependencies": {
+    "lerna": "^3.15.0",
+    "webpack-cli": "^3.3.6"
+  }
+}

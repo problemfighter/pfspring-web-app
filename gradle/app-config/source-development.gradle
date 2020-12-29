@@ -85,3 +85,28 @@ if (testFeature && testFeature.equals("yes")) {
     build.dependsOn cloneStudentSubProject
 }
 
+
+def uiProject = [
+        [
+                "name"        : "UI Base Library",
+                "destination" : "./",
+                "dependencies": [
+                        "app-ui": "https://github.com/problemfighter/react-mui-app.git",
+                ]
+        ],
+        [
+                "name"        : "UI Base Library Dependency",
+                "destination" : "app-ui/dependency-source/",
+                "dependencies": [
+                        "react-mui-ui": "https://github.com/hmtmcse/react-mui-ui.git",
+                        "tm-react": "https://github.com/hmtmcse/tm-react.git",
+                ]
+        ]
+]
+
+task configureUIProject {
+    doLast {
+        cloneProject(uiProject)
+    }
+}
+
