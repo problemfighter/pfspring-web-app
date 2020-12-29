@@ -2,7 +2,7 @@
   "packages": [
     "app-ui/dependency-source/*",
     "app-ui/ui/*",
-    "application/module/*/ui/*"
+    "application/module/*/ui"
   ],
   "version": "0.0.0"
 }

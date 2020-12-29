@@ -10,7 +10,7 @@
   "workspaces": [
     "app-ui/dependency-source/*",
     "app-ui/ui/*",
-    "application/module/*/ui/*"
+    "application/module/*/ui"
   ],
   "scripts": {
     "start-rma": "lerna run start-rma --stream",
