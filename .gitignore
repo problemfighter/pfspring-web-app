@@ -36,6 +36,7 @@ out/
 
 /management-tool
 /application/module/*
+/dependency-source/*
 /app-ui/*
 node_modules
 *.lock
