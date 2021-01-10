@@ -10,6 +10,7 @@ def dependencyList = [
         [group: "com.problemfighter.pfspring.restapi", name: "pfspring-rest-api", version: "$pfSpringRestApi"],
         [group: "com.problemfighter.pfspring.multitenant", name: "pfspring-multi-tenant", version: "$pfSpringMultiTenant"],
         // [group: "com.problemfighter.pfspring.security", name: "pfspring-security", version: "$pfSpringSecurity"], // Optional
+         [group: "com.problemfighter.pfspring.jwt", name: "pfspring-jwt", version: "$pfSpringJwt"], // Optional
 ]
 
 dependencies {
