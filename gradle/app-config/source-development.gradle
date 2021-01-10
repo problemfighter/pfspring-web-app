@@ -28,6 +28,9 @@ def projectDependencies = [
                         "pfspring-multi-tenant": "https://github.com/problemfighter/pfspring-multi-tenant.git",
                         "pfspring-security": "https://github.com/problemfighter/pfspring-security.git",
                         "pfspring-acl-validator": "https://github.com/problemfighter/pfspring-acl-validator.git",
+
+                        "pfspring-identity": "https://github.com/problemfighter/pfspring-identity.git",
+                        "pfspring-access-control": "https://github.com/problemfighter/pfspring-access-control.git",
                 ]
         ]
 ]

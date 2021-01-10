@@ -32,7 +32,7 @@ out/
 .vscode/
 
 ./gradle.properties
-./dependency-source
+./dependency-source/*
 
 /management-tool
 /application/module/*
