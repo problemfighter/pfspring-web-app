@@ -40,3 +40,4 @@ out/
 /app-ui/*
 node_modules
 *.lock
+clone-poject.sh
