@@ -33,6 +33,9 @@ def projectDependencies = [
                         "pfspring-access-control": "https://github.com/problemfighter/pfspring-access-control.git",
                         "pfspring-jwt": "https://github.com/problemfighter/pfspring-jwt.git",
                         "pfspring-jpa-common": "https://github.com/problemfighter/pfspring-jpa-common.git",
+
+                        "pfspring-communication": "https://github.com/problemfighter/pfspring-communication.git",
+                        "pfspring-templating-engine": "https://github.com/problemfighter/pfspring-templating-engine.git",
                 ]
         ]
 ]
