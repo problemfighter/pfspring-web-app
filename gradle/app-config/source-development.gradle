@@ -17,6 +17,7 @@ def projectDependencies = [
                 "destination" : "$dependencySource" + "dev-library/",
                 "dependencies": [
                         "pf-java-object-copier": "https://github.com/problemfighter/pf-java-object-copier.git",
+                        "pf-java-datetime-util": "https://github.com/problemfighter/pf-java-datetime-util.git",
                 ]
         ],
         [
